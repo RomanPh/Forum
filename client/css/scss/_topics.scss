@@ -1,0 +1,71 @@
+@import 'borderRadius';
+@import 'colorScheme';
+@mixin fonts() {
+    font-size: 1.7rem;
+}
+
+textarea {
+    background: none repeat scroll 0 0 $bgPost;
+    border: medium none;
+    @include border-radius(0.1rem);
+    color: #777777;
+    float: left;
+    font-family: Lato;
+    @include fonts();
+    height: 10rem;
+    letter-spacing: 0.1rem;
+    padding: 0.7rem;
+    width: 100%;
+    resize: vertical;
+    outline: none;
+    border: 0.1rem solid $postBorderColor;
+    margin: 0.01rem;
+}
+
+.nav-panel {
+    @include fonts();
+}
+
+.button-post {
+    float: right;
+    margin: 1.5rem;
+}
+
+blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+    p {
+        display: inline;
+    }
+}
+
+.topicDescription {
+    height: 25rem;
+}
+
+.closeTopicDialog {
+    margin-right: 1.5rem;
+    margin-top: 0.7rem;
+}
+
+.textStyleModalDialogNewTopic {
+    text-align: center;
+}
+
+.dialogLabelStyle {
+    margin-left: -1rem;
+    font-size: 1.5rem;
+    text-align: left;
+}

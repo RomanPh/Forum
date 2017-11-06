@@ -1,0 +1,60 @@
+<div>
+    <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <div class="row">
+            <table>
+                <thead>
+                    <th>
+                        <div>Category name</div>
+                    </th>
+                    <th>
+                        <div>Topics</div>
+                    </th>
+                    <th>
+                        <div>Last updated</div>
+                    </th>
+                    <th class="col-xs-1" colspan="2">
+                        <button class="buttonSpace btn btn-xs pull-right" data-toggle="tooltip" title="Add category" uib-popover-template="popOverWindow.templateUrl"
+                            popover-placement="left" popover-is-open="popOverWindow.isOpen" ng-click="popOverWindow.openAddCategory()">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="category in categories">
+                        <td class="col-md-1 col-xs-1 contentStyle">
+                            <span><img class="categoryImage pull-left" src="./../img/folder.png" alt="Folder"></img></span>
+                            <p class="contentStyle">
+                                <a ng-hide="editCategory" href="#!/categories/{{category._id}}/topics">{{category.name}}</a>
+                            </p>
+                            <input ng-show="editCategory" ng-model="category.name" />
+                        </td>
+                        <td class="col-sm-1">
+                            {{category.topics.length}}
+                        </td>
+                        <td class="col-md-1 col-xs-1" ng-repeat="topic in category.topics | lastPost">
+                            {{topic.created_at | asDate | date:"short"}}
+                        </td>
+                        <td class="col-md-1 col-xs-1" ng-show="!category.topics.length">
+                        </td>
+                        <td class="col-xs-1">
+                            <div ng-show="user.isAdmin">
+                                <div class="buttonSpace btn btn-sm pull-right" ng-show="!editCategory" data-toggle="tooltip" title="Delete" ng-click="deleteCategory(category)">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </div>
+                                <div ng-show="editCategory" class="buttonSpace btn btn-sm pull-right" data-toggle="tooltip" title="Cancel" ng-click="editCategory=false">
+                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                </div>
+                                <div ng-hide="editCategory" class="buttonSpace btn btn-sm pull-right" data-toggle="tooltip" title="Edit" ng-click="editCategory=true">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                </div>
+                                <div ng-show="editCategory" class="buttonSpace btn btn-sm pull-right" data-toggle="tooltip" title="Save" ng-click="saveCategory(category)">
+                                    <span class="glyphicon glyphicon-saved"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

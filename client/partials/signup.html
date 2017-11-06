@@ -1,0 +1,49 @@
+<div class="col-md-6 col-md-offset-1 col-xs-12 well logIn">
+    <div class="signUpHeader">
+        <h2>Create account</h2>
+    </div>
+    <form class="signUpBody" name="userForm" novalidate>
+        <!-- First name -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.first_name.$invalid && !userForm.first_name.$pristine }">
+            <label>First name</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" name="first_name" class="form-control" ng-model="user.first_name" ng-minlength="1" ng-maxlength="50" required>
+            </div>
+            <p ng-show="userForm.first_name.$invalid && !userForm.first_name.$pristine" class="help-block">Your first name is required.</p>
+        </div>
+
+        <!-- Last name -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.last_name.$invalid && !userForm.last_name.$pristine }">
+            <label>Last name</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" name="last_name" class="form-control" ng-model="user.last_name" ng-minlength="1" ng-maxlength="50" required>
+            </div>
+            <p ng-show="userForm.last_name.$invalid && !userForm.last_name.$pristine" class="help-block">Your last name is required.</p>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+            <label>Email</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <input type="email" name="email" class="form-control" ng-model="user.email" required>
+            </div>
+            <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+            <label>Password</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input type="password" name="password" class="form-control" ng-model="user.password" ng-minlength="3" ng-maxlength="8" required>
+            </div>
+            <p ng-show="userForm.password.$error.minlength" class="help-block">Password is too short.</p>
+            <p ng-show="userForm.password.$error.maxlength" class="help-block">Password is too long.</p>
+        </div>
+
+        <button type="submit" class="buttonSpace btn btn-md" ng-disabled="userForm.$invalid" ng-click="signup(user)">Sign up</button>
+    </form>
+</div>

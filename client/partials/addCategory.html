@@ -1,0 +1,21 @@
+<div class="md-form">
+    <md-a class="closeIcon" ng-click="popOverWindow.close()">
+        <span class="glyphicon glyphicon-remove-circle"></span>
+    </md-a>
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>New category</label>
+        <input name="newCategory" ng-model="newCategory" required minlength="3" maxlength="100" />
+
+        <div class="hint" ng-show="showHints">How can we reach you?</div>
+
+        <div ng-messages="newCategory.$error" ng-hide="showHints">
+            <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                New category must be between 3 and 100 characters long.
+            </div>
+        </div>
+    </md-input-container>
+
+    <div layout-gt-sm="row">
+        <a class="buttonSpace btn btn-xs pull-right" ng-click="popOverWindow.addCategory(newCategory)">Add</a>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+@import 'colorScheme';
+.navbar {
+    background-color: $bgColor;
+}
+
+.navbar-default {
+    .navbar-nav {
+        li {
+            a {
+                color: $colorLink;
+                &:hover {
+                    color: $hoverLink;
+                }
+                &:focus {
+                    color: $colorLink;
+                }
+            }
+        }
+    }
+}
+
+.container {
+    .jumbotron {
+        border-radius: 0;
+    }
+}
+
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+    border: none;
+}
+
+.header-img {
+    background-image: url(./../img/background.png);
+    color: $colorLink;
+}
+
+tr {
+    font-size: 1.8rem;
+    td {
+        img {
+            width: 3rem;
+        }
+    }
+}

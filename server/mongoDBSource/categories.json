@@ -1,0 +1,4 @@
+{"_id":{"$oid":"5994abe6f2a4ab0c8cf41730"},"name":"HTML","created_at":{"$date":"2017-08-16T20:32:38.589Z"},"topics":[{"$oid":"5994ace1f2a4ab0c8cf41734"},{"$oid":"5994ad7df2a4ab0c8cf41735"}],"__v":2}
+{"_id":{"$oid":"5994abebf2a4ab0c8cf41731"},"name":"CSS","created_at":{"$date":"2017-08-16T20:32:43.740Z"},"topics":[{"$oid":"5994adecf2a4ab0c8cf41736"},{"$oid":"5994ae1df2a4ab0c8cf41737"}],"__v":2}
+{"_id":{"$oid":"5994abf0f2a4ab0c8cf41732"},"name":"C++","created_at":{"$date":"2017-08-16T20:32:48.915Z"},"topics":[],"__v":0}
+{"_id":{"$oid":"5994abf7f2a4ab0c8cf41733"},"name":"SQL","created_at":{"$date":"2017-08-16T20:32:55.645Z"},"topics":[],"__v":0}

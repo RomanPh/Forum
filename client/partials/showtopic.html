@@ -1,0 +1,132 @@
+<div class="container">
+
+    <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <div class="row">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{ topic.name}}</h1>
+                    <p class="lead">
+                        by {{topic.user_id.first_name}}
+                    </p>
+                    <hr>
+                    <p><span class="glyphicon glyphicon-time"></span> Posted on {{topic.created_at | date : "medium"}}</p>
+                    <hr>
+                    <p ng-show="!topicMenu" class="lead">{{topic.description}}</p>
+                    <div ng-show="topicMenu">
+                        <textarea ng-model="topicTextArea" ng-bind="topic.description"></textarea>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-xs-4" ng-show="topicMenu && user.isAdmin">
+                    <span class="categoryChanging">Choose new topic category </span>
+                    <select ng-model="selectedCategory" ng-options="category._id as category.name for category in categories">
+                    </select>
+                </div>
+                <div class="col-sm-1 col-xs-1">
+                    <div class="btn btn-primary span4 btn-xs" ng-show="!topicMenu" data-toggle="tooltip" title="Edit" ng-click="editTopic()">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </div>
+                    <div class="btn btn-primary btn-xs" ng-show="topicMenu" data-toggle="tooltip" title="Save" ng-click="saveTopic(topic, topicTextArea)">
+                        <span class="glyphicon glyphicon-saved"></span>
+                    </div>
+                </div>
+                <div class="col-sm-1 col-xs-1">
+                    <div class="btn btn-primary btn-xs" ng-show="topicMenu" data-toggle="tooltip" title="Close editing" ng-click="topicMenu=false">
+                        <span class="glyphicon glyphicon-remove-circle"></span>
+                    </div>
+                </div>
+                <div class="col-sm-1 col-xs-1" ng-show="false">
+                    <div class="btn btn-primary span4 btn-xs" ng-show="topicMenu" data-toggle="tooltip" title="Delete" ng-click="deleteTopic(topic)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </div>
+                </div>
+            </div>
+            <h3><strong>Answers</strong></h3>
+            <hr>
+            <div class="row">
+                <ul ng-repeat="post in topic.posts" style="list-style-type: none;">
+                    <li>
+                        <div class="row">
+                            <div class="col-sm-1 col-xs-1">
+                                <div class="row">
+                                    <div class="vote-style">
+                                        <div class="glyphicon glyphicon-triangle-top col-lg-12 col-sm-12" ng-click="addLike(post, user)"></div>
+                                        <div class="col-sm-12 col-xs-12">{{post.users_like.length - post.users_dislike.length}}</div>
+                                        <div class="glyphicon glyphicon-triangle-bottom col-lg-12 col-sm-12" ng-click="addDislike(post, user)"></div>
+                                    </div>
+                                </div>
+                                <div class="bestAnsImgContainer" ng-show="post.best_answer">
+                                    <img class="bestAnsImg" src="./../img/ok.png" alt="best answer" />
+                                </div>
+                            </div>
+                            <div class="col-sm-11 col-xs-11">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <span class="text-muted">Commented by {{post.user_id.first_name}} at {{post.created_at | date : "medium"}}</span>
+                                    </div>
+                                    <div ng-show="!editPost" class="panel-body">
+                                        <blockquote ng-show="post.comment">
+                                            <p>
+                                                {{post.comment}}
+                                            </p>
+                                        </blockquote>
+                                        <p class="contentStyle">
+                                            {{post.description}}
+                                        </p>
+                                    </div>
+                                    <div ng-show="editPost" class="panel-body">
+                                        <textarea ng-model="postTextArea" ng-bind="post.description"></textarea>
+                                    </div>
+                                    <div class="panel-footer row-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-1 col-xs-1">
+                                                <div class="btn btn-primary span4 btn-xs" data-toggle="tooltip" title="The best answer" ng-click="chooseBestAnswer(post, topic)">
+                                                    <span class="glyphicon glyphicon-ok"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-1 col-xs-1">
+                                                <a scroll-to="commentTextArea">
+                                                    <div class="btn btn-primary span4 btn-xs" data-toggle="tooltip" title="The best answer" ng-click="commentPost(post, newPost)">
+                                                        <span class="glyphicon glyphicon-comment"></span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-sm-1 col-xs-1">
+                                                <div class="btn btn-primary span4 btn-xs" ng-show="!editPost" data-toggle="tooltip" title="Edit" ng-click="editPost=true">
+                                                    <span class="glyphicon glyphicon-edit"></span>
+                                                </div>
+                                                <div ng-show="editPost" class="btn btn-primary btn-xs" data-toggle="tooltip" title="Save" ng-click="savePost(post, postTextArea)">
+                                                    <span class="glyphicon glyphicon-saved"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-1 col-xs-1">
+                                                <div ng-show="editPost" class="btn btn-primary btn-xs" data-toggle="tooltip" title="Close editing" ng-click="editPost=false">
+                                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-1 col-xs-1" ng-show="user.isAdmin">
+                                                <div class="btn btn-primary span4 btn-xs" ng-show="editPost" data-toggle="tooltip" title="Delete" ng-click="deletePost(post, topic)">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row well commentPanel">
+                <div>
+                    <p>Leave a comment please</p>
+                    <textarea id="commentTextArea" placeholder="Add a post" ng-model="newPost.description"></textarea>
+                    <button class="btn btn-primary button-post" ng-click="addPost(topic)">Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

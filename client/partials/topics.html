@@ -1,0 +1,82 @@
+<div>
+  <div class="col-md-10 col-md-offset-1 col-xs-12">
+    <div class="row">
+      <table>
+        <thead>
+          <th class="col-md-1">
+            <div>Topic name</div>
+          </th>
+          <th class="col-xs-1">
+            <div>Posts</div>
+          </th>
+          <th class="col-md-1 col-xs-1">
+            <div>Last post</div>
+          </th>
+          <th class="col-xs-1">
+            <button type="button" class="buttonSpace btn btn-xs pull-right"  title="Add topic" data-toggle="modal" data-target="#addTopicDialog">
+               <span class="glyphicon glyphicon-plus"></span>
+            </button>
+          </th>
+        </thead>
+        <tbody>
+          <tr ng-class="emptyCell" ng-repeat="topic in topics">
+            <td class="col-md-1">
+              <span>
+                  <img class="categoryImage pull-left" src="./../img/topic.png" alt="discussion"></img>
+              </span>
+              <p class="contentStyle">
+                <a class="pull-left" href="#!/topics/{{topic._id}}">{{topic.name}}
+              </p>
+            </td>
+            <td class="col-xs-1">
+              {{topic.posts.length}}
+            </td>
+            <td class="col-md-1 col-xs-1" ng-repeat="post in topic.posts | lastPost">
+               {{post.created_at | asDate | date:"short"}}
+            </td>
+            <td class="col-md-1 col-xs-1" ng-show="!topic.posts.length">
+            </td>
+            <td class="col-xs-1">
+              <div ng-show="user.isAdmin" class="buttonSpace btn btn-sm pull-right" data-toggle="tooltip" title="Delete" ng-click="deleteTopic(topic)">
+                  <span class="glyphicon glyphicon-trash"></span>
+              </div>
+            </td>       
+				  </tr>
+        </tbody>
+		  </table>
+      <div class="modal fade " id="addTopicDialog" role="dialog">
+        <div class="modal-dialog">
+    
+      <!-- Modal content-->
+          <div class="col-md-12 col-sm-6  ">
+            
+            <button type="button" class="close closeTopicDialog" data-dismiss="modal">&times;</button>
+
+            <form class="form-horizontal well mainPageStyle textStyleModalDialogNewTopic" name="newTopic">
+              <h2>New topic</h2>
+                <label class="col-sm-7 dialogLabelStyle">Topic name:</label>
+                <div class="form-group">
+                    <div class="col-sm-12 col-xs-5">
+                        <input name="topicName" class="form-control" ng-model="newTopic.name" ng-minlength="2" ng-maxlength="100" ng-required="true">
+                        <p ng-show="newTopic.topicName.$error.minlength || newTopic.topicName.$error.malength" class="text-danger">Topic name is not valid. The quantity symbols must be (2 - 100)</p>
+                    </div>
+                </div>
+                <label class="col-sm-2 dialogLabelStyle">Description:</label>
+                <div class="form-group">
+                    <div class="col-sm-12 col-xs-5">
+                        <textarea name="newTopicDescript" class="form-control"  rows="15" ng-model="newTopic.description" ng-minlength="3" ng-maxlength="3000" ng-required="true"></textarea>
+                         <p ng-show="newTopic.newTopicDescript.$error.minlength || newTopic.newTopicDescript.$error.malength" class="text-danger">Description is not valid. The quantity symbols must be (3 - 3000)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-1">
+                        <button class="buttonSpace btn btn-md" ng-disabled="newTopic.$invalid" ng-click="addTopic(newTopic)">Add new topic</button>
+                    </div>
+                </div>
+            </form>
+          </div>
+        </div>
+	    </div>
+    </div>
+  </div>
+</div>

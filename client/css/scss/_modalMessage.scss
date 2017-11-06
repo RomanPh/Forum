@@ -1,0 +1,22 @@
+@import 'borderRadius';
+
+.message {
+    @include border-radius(1rem);
+    color: $textColor;
+    padding: 0.9rem 0.01rem;
+    text-align: center;
+    p {
+      font-family: 100% Helvetica, sans-serif;
+      font-size: 2rem;
+    }
+}
+
+.success {
+    width: 20rem;
+}
+
+.error {
+    @extend .message;
+    background-color: $bgError;
+}
+

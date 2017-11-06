@@ -1,0 +1,73 @@
+@import 'colorScheme';
+
+hr {
+    color: $bgColorTable;
+    background-color: $bgColorTable;
+    height: 0.05rem;
+}
+
+.panel-default {
+    .panel-body {
+        border: $bgColorTable;
+    }
+    .panel-heading {
+        background-color: $bgColorTable;
+        .text-muted {
+            color: $colorLink;
+        }
+    }
+}
+
+.commentImg{
+    width: 2.8rem;
+    height: 2.8rem;
+}
+
+.selectCategory{
+    width: 8rem;
+}
+
+.vote-style {
+    font-size: 3rem;
+    color: $voteSymbol;
+    text-align: center;
+}
+
+@media screen and (max-width: 820px) {
+  .vote-style {
+    font-size: 2rem;
+  }
+}
+
+.commentPanel{
+    background-color: $bgColorTable;
+    p {
+        color: $postTitleColor;
+    }
+}
+
+.bestAnsImg{
+    width: 3rem;
+    height: 3rem;
+}
+
+.bestAnsImgContainer{
+    padding-left: 1.5rem;
+}
+
+.categoryChanging{
+    margin-right: 0.5rem;
+}
+
+@media screen and (max-width: 820px) {
+  .categoryChanging {
+    margin-right: 0.1rem;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .bestAnsImgContainer {
+    width: 2rem;
+    height: 2rem;
+  }
+}

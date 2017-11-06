@@ -1,0 +1,40 @@
+.logIn {
+    color: $logInTextColor;
+    background-color: $logInBackColor;
+    
+    h2 {
+        text-align: center;
+    }
+    button {
+        margin-left: 45%;
+        margin-right: 45%;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+        background-color: $btnColor;
+    }
+    @media screen and (min-width: 980px) {
+         margin-left: 25%;
+    }
+}
+
+.signUpHeader{
+    background: linear-gradient($colorGradientStop1, $colorGradientStop2);
+    margin: 0;
+    color: white;
+    margin-top:-40px;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.signUpBody{  
+    margin-top: 1.3rem;
+}
+
+.logInHeader{
+    margin-top:-20px;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 0.3rem;
+}

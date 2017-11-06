@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-strict-di class="mainPageStyle">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Forum</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.4/angular-material.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <script src="https://code.angularjs.org/1.3.5/angular-route.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-aria.min.js"></script>
+    <script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.4/angular-material.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body class="mainPageStyle">
+    <div>
+        <div class="navbar navbar-default" role="navigation" ng-controller="NavigationController">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#!users" ng-show="user.isAdmin">Users</a></li>
+                        <li>
+                            <a href="#categories">
+                                <span class="glyphicon glyphicon-home"></span> Forum
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li ng-show="!user">
+                            <a href="#!login">
+                                <span class="glyphicon glyphicon-log-in "></span>
+                                Sign In
+                            </a>
+                        </li>
+                        <li ng-show="!user">
+                            <a href="#!signup">
+                                <span class="glyphicon glyphicon-user accent"></span>
+                                Sign Up
+                            </a>
+                        </li>
+                        <li ng-show="user">
+                            <a href="#!/users/{{user._id}}" ng-bind="user.first_name"></a>
+                        </li>
+                        <li ng-show="user">
+                            <a href="" ng-click="logOut()">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron  header-img">
+            <h1 class="text-left siteTitle">Web developer forum</h1>
+            <p class="text-left siteTitle">Discussion board for learning and sharing knowledge</p>
+        </div>
+        <div ng-view></div>
+    </div>
+
+    <script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

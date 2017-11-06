@@ -1,0 +1,21 @@
+.onlineStatus{
+  height: 2rem;
+  width: 2rem;
+  border-radius: 3rem;
+}
+
+.isOnline {
+  background-color: $onlineStatusColor;
+}
+
+.isAbsent {
+  background-color: $offlineStatusColor;
+}
+
+.userProfile{
+  font-size: 3rem;
+}
+
+.userProfileHeader{
+  background: linear-gradient($colorGradientStop1, $colorGradientStop2);
+}

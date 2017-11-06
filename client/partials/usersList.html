@@ -1,0 +1,52 @@
+<div>
+    <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <div class="row">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                        </th>
+                        <th>
+                            <div>User name</div>
+                        </th>
+                        <th>
+                            <div>Online</div>
+                        </th>
+                        <th>
+                            <div>Last visit</div>
+                        </th>
+                        <th>
+                            <div>Account status (block/ unblock)</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in users">
+                        <td class="col-sm-1">
+                            <img src="./../img/user.png" alt="user"></img>
+                        </td>
+                        <td>
+                            <a href="#!/users/{{user._id}}">{{user.first_name}}</a>
+                        </td>
+                        <td>
+                            <input type="button" class="onlineStatus" ng-class=" user.isOnline ? 'isOnline' : 'isAbsent'">
+                        </td>
+                        <td>
+                            {{user.lastVisit | asDate | date:"short"}}
+                        </td>
+                        <td>
+                            <div ng-show="user.isAdmin" class="buttonSpace btn btn-sm col-centered" data-toggle="tooltip" title="Admin">
+                                <span class="glyphicon glyphicon-star"></span>
+                            </div>
+                            <div ng-hide="user.isAdmin" class="col-centered">
+                                <md-switch layout-align="center center" class="md-primary md-hue-2" md-no-ink aria-label="Block user account" ng-change="banUser(user)" ng-model="user.isBanned"
+                                    ng-true-value="false" ng-false-value="true">
+                                </md-switch>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
